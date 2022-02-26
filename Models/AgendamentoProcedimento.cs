@@ -26,5 +26,10 @@ namespace Models
             this.IdProcedimento = IdProcedimento;
             this.IdAgendamento = IdAgendamento;
         }
+        
+        public static AgendamentoProcedimento GetAgendamentoProcedimento(AgendamentoProcedimento agendamentoProcedimentos)
+        {
+            return agendamentoProcedimentos;
+        }
     }
 }
