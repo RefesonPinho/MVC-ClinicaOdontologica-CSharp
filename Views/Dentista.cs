@@ -31,7 +31,7 @@ namespace Views
                 throw new Exception("Salário inválido.");
             }
             Console.WriteLine("Digite a Especialidade do Denstista: ");
-            string Especialidade = Console.ReadLine();
+            int IdEspecialidade = Convert.ToInt32(Console.ReadLine());
 
             DentistaController.InserirDentista(
                 Nome,
@@ -41,7 +41,7 @@ namespace Views
                 Senha,
                 Registro,
                 Salario,
-                Especialidade
+                IdEspecialidade
             );
 
         }
@@ -81,7 +81,7 @@ namespace Views
                 throw new Exception("Salário inválido.");
             }
             Console.WriteLine("Digite a Especialidade do Denstista: ");
-            string Especialidade = Console.ReadLine();
+            int IdEspecialidade = Convert.ToInt32(Console.ReadLine());
 
             DentistaController.AlterarDentista(
                 Id,
@@ -92,7 +92,7 @@ namespace Views
                 Senha,
                 Registro,
                 Salario,
-                Especialidade
+                IdEspecialidade
             );
 
         }

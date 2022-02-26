@@ -16,7 +16,7 @@ namespace Controllers
             string Senha,
             string Registro,
             double Salario,
-            string Especialidade
+            int IdEspecialidade
         )
         {
             if (String.IsNullOrEmpty(Nome))
@@ -53,7 +53,7 @@ namespace Controllers
                 throw new Exception("Registro inválido");
             }
 
-            return new Dentista(Nome, Cpf, Fone, Email, Senha, Registro, Salario, Especialidade);
+            return new Dentista(Nome, Cpf, Fone, Email, Senha, Registro, Salario,IdEspecialidade);
         }
 
         public static Dentista AlterarDentista(
@@ -65,7 +65,7 @@ namespace Controllers
             string Senha,
             string Registro,
             double Salario,
-            string Especialidade
+            int IdEspecialidade
         )
         {
             Dentista dentista = GetDentista(Id);

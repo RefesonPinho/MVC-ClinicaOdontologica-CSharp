@@ -5,25 +5,50 @@ using System.Collections.Generic;
 
 namespace Controllers
 {
-    
     public class AgendamentoProcedimentoController
     {
-        public static Procedimento GetProcedimento(
+        public static AgendamentoProcedimento IncluirAgendamentoProcedimento(
+            int IdAgendamento,
+            int IdProcedimento
+        )
+        {
+            if (String.IsNullOrEmpty(Numero)) {
+                throw new Exception("Número é obrigatório");
+            }
+
+            return new AgendamentoProcedimento(IdAgendamento, IdProcedimento);
+        }
+
+        public static AgendamentoProcedimento ExcluirAgendamentoProcedimento(
             int Id
         )
         {
-            List<Procedimento> procedimentoModels = Models.Procedimento.GetProcedimentos();
-            IEnumerable<Procedimento> procedimentos = from Procedimento in procedimentoModels
-                            where Procedimento.Id == Id
-                            select Procedimento;
-            Procedimento procedimento = procedimentos.First();
+            AgendamentoProcedimento agendamentoProcedimento = GetAgendamentoProcedimento(Id);
+            Models.AgendamentoProcedimento.RemoverAgendamentoProcedimento(agendamentoProcedimento);
+            return agendamentoProcedimento;
+        }
+
+        public static List<AgendamentoProcedimento> VisualizarAgendamentoProcedimentos()
+        {
+            return Models.AgendamentoProcedimento.GetAgendamentoProcedimentos();  
+        }
+
+        public static AgendamentoProcedimento GetAgendamentoProcedimento(
+            int Id
+        )
+        {
+            List<AgendamentoProcedimento> agendamentoProcedimentosModels = Models.AgendamentoProcedimento.GetAgendamentoProcedimentos();
+            IEnumerable<AgendamentoProcedimento> agendamentoProcedimentos = from AgendamentoProcedimento in agendamentoProcedimentosModels
+                            where AgendamentoProcedimento.Id == Id
+                            select AgendamentoProcedimento;
+            AgendamentoProcedimento agendamentoProcedimento = agendamentoProcedimentos.First();
             
-            if (procedimento == null)
+            if (agendamentoProcedimento == null)
             {
-                throw new Exception("Sala não encontrada");
+                throw new Exception("AgendamentoProcedimento não encontrada");
             }
 
-            return procedimento;
+            return agendamentoProcedimento;
         }
     }
 }

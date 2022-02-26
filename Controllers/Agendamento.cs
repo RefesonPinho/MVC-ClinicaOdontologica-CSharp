@@ -11,14 +11,12 @@ namespace Controllers
             int IdPaciente,
             int IdDentista,
             int IdSala,
-            DateTime Data,
-            int IdProcedimento
+            DateTime Data
         )
         {
             PacienteController.GetPaciente(IdPaciente);
             DentistaController.GetDentista(IdDentista);
             SalaController.GetSala(IdSala);
-            AgendamentoProcedimentoController.GetProcedimento(IdProcedimento);
 
             if (Data == null || Data <= DateTime.Now)
             {
@@ -80,8 +78,6 @@ namespace Controllers
 
             agendamento.IdSala = IdSala;
             agendamento.Data = Data;
-            agendamento.Procedimento = Procedimento;
-
             return agendamento;
         }
         public static Agendamento ExcluirAgendamento(
