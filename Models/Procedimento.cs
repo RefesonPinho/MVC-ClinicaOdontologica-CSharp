@@ -1,49 +1,48 @@
-using System;
 using System.Collections.Generic;
 
 namespace Models
 {
-    public class Procedimento
+    public class Procedimento 
     {
         public static int ID = 0;
         private static List<Procedimento> Procedimentos = new List<Procedimento>();
         public int Id { set; get; }
         public string Descricao { set; get; }
-        public double preco { set; get; }
-
+        public double Preco { set; get; }
 
         public override string ToString()
         {
-            return $"\nId : {this.Id}" 
-                + $"\nDescricao: R$ {this.Descricao}"
-                + $"\nPreco: {this.preco}";
+            return base.ToString()
+                + $"\nId: {this.Id}" 
+                + $"\nSalario: R$ {this.Descricao}"
+                + $"\nPreço: {this.Preco}";
         }
-
         public Procedimento(
             string Descricao,
-            double preco
-        ) : this(++ID,Descricao,preco)
+            double Preco
+        ) : this(++ID, Descricao, Preco)
         {}
 
-        public Procedimento(
+        private Procedimento(
             int Id,
             string Descricao,
-            double preco
+            double Preco
         )
         {
             this.Id = Id;
             this.Descricao = Descricao;
-            this.preco = preco;
-        } 
+            this.Preco = Preco;
+
+            Procedimentos.Add(this);
+        }
+
 
         public static List<Procedimento> GetProcedimentos()
         {
             return Procedimentos;
         }
 
-        public static void RemoverProcedimento(
-            Procedimento procedimento
-        )
+        public static void RemoverProcedimento(Procedimento procedimento)
         {
             Procedimentos.Remove(procedimento);
         }

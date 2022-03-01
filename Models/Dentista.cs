@@ -8,14 +8,14 @@ namespace Models
         private static List<Dentista> Dentistas = new List<Dentista>();
         public string Registro { set; get; }
         public double Salario { set; get; }
-        public int IdEspecialidade;
+        public int IdEspecialidade { set; get; }
 
         public override string ToString()
         {
             return base.ToString()
                 + $"\nRegistro (CRO): {this.Registro}" 
                 + $"\nSalario: R$ {this.Salario}"
-                + $"\nEspecialidade: R$ {this.IdEspecialidade}";
+                + $"\nId da Especialiade: {this.IdEspecialidade}";
         }
         public Dentista(
             string Nome,
@@ -27,7 +27,8 @@ namespace Models
             double Salario,
             int IdEspecialidade
         ) : this(++ID, Nome, Cpf, Fone, Email, Senha, Registro, Salario, IdEspecialidade)
-        {}
+        {
+        }
 
         private Dentista(
             int Id,

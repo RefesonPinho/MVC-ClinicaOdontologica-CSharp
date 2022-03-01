@@ -1,35 +1,50 @@
-using System;
 using System.Collections.Generic;
 
 namespace Models
 {
-    public class AgendamentoProcedimento
-    {   
+    public class AgendamentoProcedimento 
+    {
         public static int ID = 0;
-        public int Id;
-        public int IdProcedimento;
-        public int IdAgendamento;
-
+        private static List<AgendamentoProcedimento> AgendamentoProcedimentos = new List<AgendamentoProcedimento>();
+        public int Id { set; get; }
+        public int IdAgendamento { set; get; }
+        public int IdProcedimento{ set; get; }
+        
+        public override string ToString()
+        {
+            return base.ToString()
+                + $"\nId: {this.Id}" 
+                + $"\nIdAgendamento: R$ {this.IdAgendamento}"
+                + $"\nIdProcedimento: {this.IdProcedimento}";
+        }
         public AgendamentoProcedimento(
-            int IdProcedimento,
-            int IdAgendamento
-        ) : this(++ID,IdProcedimento,IdAgendamento)
+            int IdAgendamento,
+            int IdProcedimento
+        ) : this(++ID, IdAgendamento, IdProcedimento)
         {}
 
-        public AgendamentoProcedimento(
+        private AgendamentoProcedimento(
             int Id,
-            int IdProcedimento,
-            int IdAgendamento
+            int IdAgendamento,
+            int IdProcedimento
         )
         {
             this.Id = Id;
-            this.IdProcedimento = IdProcedimento;
             this.IdAgendamento = IdAgendamento;
+            this.IdProcedimento = IdProcedimento;
+
+            AgendamentoProcedimentos.Add(this);
         }
-        
-        public static AgendamentoProcedimento GetAgendamentoProcedimento(AgendamentoProcedimento agendamentoProcedimentos)
+
+
+        public static List<AgendamentoProcedimento> GetAgendamentoProcedimentos()
         {
-            return agendamentoProcedimentos;
+            return AgendamentoProcedimentos;
+        }
+
+        public static void RemoverAgendamentoProcedimento(AgendamentoProcedimento agendamentoProcedimento)
+        {
+            AgendamentoProcedimentos.Remove(agendamentoProcedimento);
         }
     }
 }

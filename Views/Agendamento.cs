@@ -56,7 +56,8 @@ namespace Views
                 IdPaciente,
                 IdDentista,
                 IdSala,
-                Data
+                Data,
+                Procedimentos
             );
 
         }

@@ -7,7 +7,6 @@ namespace Models
     {
         public static int ID = 0;
         private static List<Agendamento> Agendamentos = new List<Agendamento>();
-        
         public int Id { set; get; }
         public int IdPaciente { set; get; }
         public Paciente Paciente { get; }
@@ -16,14 +15,16 @@ namespace Models
         public int IdSala { set; get; }
         public Sala Sala { get; }
         public DateTime Data { set; get; }
+        public string Procedimento { set; get; }
         public bool Confirmado { set; get; }
 
         public Agendamento(
             int IdPaciente,
             int IdDentista,
             int IdSala,
-            DateTime Data
-        ) : this(++ID, IdPaciente, IdDentista, IdSala, Data)
+            DateTime Data,
+            string Procedimento
+        ) : this(++ID, IdPaciente, IdDentista, IdSala, Data, Procedimento)
         {}
 
         private Agendamento(
@@ -31,7 +32,8 @@ namespace Models
             int IdPaciente,
             int IdDentista,
             int IdSala,
-            DateTime Data
+            DateTime Data,
+            string Procedimento
         )
         {
             this.Id = Id;
@@ -42,6 +44,7 @@ namespace Models
             this.IdSala = IdSala;
             this.Sala = Sala.GetSalas().Find(Sala => Sala.Id == IdSala);
             this.Data = Data;
+            this.Procedimento = Procedimento;
 
             Agendamentos.Add(this);
         }
@@ -53,6 +56,7 @@ namespace Models
                 + $"\nDentista: {this.Dentista.Nome}"
                 + $"\nSala: {this.Sala.Numero}"
                 + $"\nData: {this.Data}"
+                + $"\nProcedimento: {this.Procedimento}"
                 + $"\nConfirmado: {(this.Confirmado ? "Sim" : "Não")}";
         }
 

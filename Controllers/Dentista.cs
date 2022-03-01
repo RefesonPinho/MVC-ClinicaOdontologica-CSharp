@@ -53,7 +53,7 @@ namespace Controllers
                 throw new Exception("Registro inválido");
             }
 
-            return new Dentista(Nome, Cpf, Fone, Email, Senha, Registro, Salario,IdEspecialidade);
+            return new Dentista(Nome, Cpf, Fone, Email, Senha, Registro, Salario, IdEspecialidade);
         }
 
         public static Dentista AlterarDentista(
