@@ -14,9 +14,7 @@ namespace Models
             string Numero,
             string Equipamentos
         ) : this(++ID, Numero, Equipamentos)
-        {
-
-        }
+        {}
 
         private Sala(
             int Id,

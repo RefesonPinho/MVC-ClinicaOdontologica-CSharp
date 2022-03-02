@@ -49,6 +49,5 @@ namespace Models
         {
             Pacientes.Remove(paciente);
         }
-
     }
 }

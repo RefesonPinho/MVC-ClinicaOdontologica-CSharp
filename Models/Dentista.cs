@@ -27,8 +27,7 @@ namespace Models
             double Salario,
             int IdEspecialidade
         ) : this(++ID, Nome, Cpf, Fone, Email, Senha, Registro, Salario, IdEspecialidade)
-        {
-        }
+        {}
 
         private Dentista(
             int Id,
@@ -59,6 +58,5 @@ namespace Models
         {
             Dentistas.Remove(dentista);
         }
-
     }
 }

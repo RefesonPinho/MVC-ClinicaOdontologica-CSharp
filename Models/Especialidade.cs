@@ -61,6 +61,5 @@ namespace Models
         {
             Especialidades.Remove(especialidade);
         }
-
     }
 }

@@ -44,9 +44,9 @@ namespace ConsultorioOdontologico
 
         public static void Main(string[] args)
         {
-            DentistaController.InserirDentista("José do Carmo", "111.111.111-11", "47 99999-9999", "jose.carmo@dentista.com", "123456", "12345/SC", 15000, 1);
-            PacienteController.InserirPaciente("Amélia da Silva", "111.111.111-11", "47 88888-8888", "amelia.silva@paciente.com", "123456", Convert.ToDateTime("1990-01-01"));
-            SalaController.IncluirSala("B135", "RaioX");
+            DentistaController.InserirDentista("Augusto da Silva", "454.123.321-54", "47 98454-6521", "Augusto.silva@dentista.com", "123456", "12345/SC", 12000, 1);
+            PacienteController.InserirPaciente("Fernando Vasconcellos", "789.456.123.41", "47 99142-4152", "fernando.vasconcellos@paciente.com", "123456", Convert.ToDateTime("1995-04-12"));
+            SalaController.IncluirSala("C45", "RaioX");
             MenuPrincipal();
 
             do
