@@ -47,7 +47,7 @@ namespace ConsultorioOdontologico
             DentistaController.InserirDentista("José do Carmo", "111.111.111-11", "47 99999-9999", "jose.carmo@dentista.com", "123456", "12345/SC", 15000, 1);
             PacienteController.InserirPaciente("Amélia da Silva", "111.111.111-11", "47 88888-8888", "amelia.silva@paciente.com", "123456", Convert.ToDateTime("1990-01-01"));
             SalaController.IncluirSala("B135", "RaioX");
-            //MenuPrincipal();
+            MenuPrincipal();
 
             do
             {
@@ -126,18 +126,29 @@ namespace ConsultorioOdontologico
             Console.WriteLine("| 2        | Incluir Paciente        |");
             Console.WriteLine("| 3        | Incluir Sala            |");
             Console.WriteLine("| 4        | Incluir Agendamento     |");
-            Console.WriteLine("| 5        | Alterar Dentista        |");
-            Console.WriteLine("| 6        | Alterar Paciente        |");
-            Console.WriteLine("| 7        | Alterar Sala            |");
-            Console.WriteLine("| 8        | Alterar Agendamento     |");
-            Console.WriteLine("| 9        | Excluir Dentista        |");
-            Console.WriteLine("| 10       | Excluir Paciente        |");
-            Console.WriteLine("| 11       | Excluir Sala            |");
-            Console.WriteLine("| 12       | Excluir Agendamento     |");
-            Console.WriteLine("| 13       | Visualizar Dentistas    |");
-            Console.WriteLine("| 14       | Visualizar Pacientes    |");
-            Console.WriteLine("| 15       | Visualizar Salas        |");
-            Console.WriteLine("| 16       | Visualizar Agendamentos |");
+            Console.WriteLine("| 5        | Incluir Especialidade   |");
+            Console.WriteLine("| 6        | Incluir Procedimento    |");
+            Console.WriteLine("| 7        | Incluir Agendamento/Procedimento|");
+            Console.WriteLine("| 8        | Alterar Dentista        |");
+            Console.WriteLine("| 9        | Alterar Paciente        |");
+            Console.WriteLine("| 10       | Alterar Sala            |");
+            Console.WriteLine("| 11       | Alterar Agendamento     |");
+            Console.WriteLine("| 12       | Alterar Especialidade   |");
+            Console.WriteLine("| 13       | Alterar Procedimento    |");
+            Console.WriteLine("| 14       | Excluir Dentista        |");
+            Console.WriteLine("| 15       | Excluir Paciente        |");
+            Console.WriteLine("| 16       | Excluir Sala            |");
+            Console.WriteLine("| 17       | Excluir Agendamento     |");
+            Console.WriteLine("| 18       | Excluir Especialidade   |");
+            Console.WriteLine("| 19       | Excluir Procedimento    |");
+            Console.WriteLine("| 20       | Excluir Agendamento/Procedimento|");
+            Console.WriteLine("| 21       | Visualizar Dentistas    |");
+            Console.WriteLine("| 22       | Visualizar Pacientes    |");
+            Console.WriteLine("| 23       | Visualizar Salas        |");
+            Console.WriteLine("| 24       | Visualizar Agendamentos |");
+            Console.WriteLine("| 25       | Visualizar Especialidade|");
+            Console.WriteLine("| 26       | Visualizar Procedimento |");
+            Console.WriteLine("| 27       | Visualizar Agendamento/Procedimento|");
             Console.WriteLine("+------------------------------------+");
 
             int opt = 0;

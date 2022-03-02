@@ -23,11 +23,6 @@ namespace Controllers
             {
                 throw new Exception("Nome inválido");
             }
-            Regex rx = new Regex("(^\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}$)|(^\\d{2}\\.\\d{3}\\.\\d{3}\\/\\d{4}\\-\\d{2}$)");
-            if (String.IsNullOrEmpty(Cpf) || !rx.IsMatch(Cpf))
-            {
-                throw new Exception("Cpf inválido");
-            }
 
             if (String.IsNullOrEmpty(Fone))
             {

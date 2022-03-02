@@ -10,15 +10,13 @@ namespace Views
         {
             Console.WriteLine("Digite a descricao da Especialidade: ");
             string Descricao = Console.ReadLine();
-
+            Console.WriteLine("Digite o detalhamento da Especialidade: ");
             string Detalhamento = Console.ReadLine();
             
-
             EspecialidadeController.InserirEspecialidade(
                 Descricao,
                 Detalhamento
             );
-
         }
 
         public static void AlterarEspecialidade()

@@ -30,7 +30,6 @@ namespace Views
             {
                 throw new Exception("Salário inválido.");
             }
-            Console.WriteLine("Digite o Id de Especialidade do Denstista: ");
             int IdEspecialidade = 0;
             Console.WriteLine("Digite o ID da Especialidade: ");
             try

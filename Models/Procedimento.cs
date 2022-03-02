@@ -10,13 +10,13 @@ namespace Models
         public string Descricao { set; get; }
         public double Preco { set; get; }
 
-        public override string ToString()
+         public override string ToString()
         {
-            return base.ToString()
-                + $"\nId: {this.Id}" 
-                + $"\nSalario: R$ {this.Descricao}"
-                + $"\nPreço: {this.Preco}";
+            return $"ID: {this.Id}"
+                + $"\nDescrição: {this.Descricao}"
+                + $"\nPreco: {this.Preco}";
         }
+
         public Procedimento(
             string Descricao,
             double Preco
