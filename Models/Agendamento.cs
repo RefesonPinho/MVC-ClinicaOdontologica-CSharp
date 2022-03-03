@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Repository;
 
 namespace Models
 {
     public class Agendamento
     {
-        public static int ID = 0;
+    
         private static List<Agendamento> Agendamentos = new List<Agendamento>();
         public int Id { set; get; }
         public int IdPaciente { set; get; }
@@ -24,10 +25,15 @@ namespace Models
             int IdSala,
             DateTime Data,
             string Procedimento
-        ) : this(++ID, IdPaciente, IdDentista, IdSala, Data, Procedimento)
-        {}
+        ) 
+        {
+            this.IdPaciente = IdPaciente;
+            this.IdDentista = IdDentista;
+            this.IdSala = IdSala;
+            this.Data = Data;
+        }
 
-        private Agendamento(
+        public Agendamento(
             int Id,
             int IdPaciente,
             int IdDentista,
@@ -45,8 +51,10 @@ namespace Models
             this.Sala = Sala.GetSalas().Find(Sala => Sala.Id == IdSala);
             this.Data = Data;
             this.Procedimento = Procedimento;
-
-            Agendamentos.Add(this);
+            Context db = new Context();
+            db.Agendamentos.Add(this);
+            db.SaveChanges();
+            
         }
 
         public override string ToString()

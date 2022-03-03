@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using Repository;
 
 namespace Models
 {
     public class Sala
     {
-        public static int ID = 0;
         private static List<Sala> Salas = new List<Sala>();
         public int Id { set; get; }
         public string Numero { set; get; }
@@ -13,10 +13,13 @@ namespace Models
         public Sala(
             string Numero,
             string Equipamentos
-        ) : this(++ID, Numero, Equipamentos)
-        {}
+        )
+        {
+            this.Numero = Numero;
+            this.Equipamentos = Equipamentos;
+        }
 
-        private Sala(
+        public Sala(
             int Id,
             string Numero,
             string Equipamentos
@@ -25,8 +28,9 @@ namespace Models
             this.Id = Id;
             this.Numero = Numero;
             this.Equipamentos = Equipamentos;
-
-            Salas.Add(this);
+            Context db = new Context();
+            db.Salas.Add(this);
+            db.SaveChanges();
         }
 
         public override string ToString()
