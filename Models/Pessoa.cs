@@ -2,7 +2,6 @@ namespace Models
 {
     public class Pessoa
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public string Fone { get; set; }
@@ -11,15 +10,16 @@ namespace Models
 
         public override string ToString()
         {
-            return $"ID: {this.Id}"
-                + $"\nNome: {this.Nome}"
+            return $"\nNome: {this.Nome}"
                 + $"\nC.P.F.: {this.Cpf}"
                 + $"\nTelefone: {this.Fone}"
                 + $"\nEmail: {this.Email}";
         }
 
+        public Pessoa()
+        {}
+
         public Pessoa(
-            int Id,
             string Nome,
             string Cpf,
             string Fone,
@@ -27,26 +27,11 @@ namespace Models
             string Senha
         )
         {
-            this.Id = Id;
             this.Nome = Nome;
             this.Cpf = Cpf;
             this.Fone = Fone;
             this.Email = Email;
             this.Senha = Senha;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
-            if (!Pessoa.ReferenceEquals(this, obj))
-            {
-                return false;
-            }
-            Pessoa it = (Pessoa) obj;
-            return it.Id == this.Id;
         }
     }
 }

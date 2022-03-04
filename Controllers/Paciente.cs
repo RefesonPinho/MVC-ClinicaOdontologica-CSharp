@@ -54,7 +54,7 @@ namespace Controllers
         }
 
         public static Paciente AlterarPaciente(
-            int Id,
+            int PacienteId,
             string Nome,
             string Cpf,
             string Fone,
@@ -63,7 +63,7 @@ namespace Controllers
             DateTime DataNascimento
         )
         {
-            Paciente paciente = GetPaciente(Id);
+            Paciente paciente = GetPaciente(PacienteId);
 
             if (!String.IsNullOrEmpty(Nome))
             {
@@ -104,10 +104,10 @@ namespace Controllers
         }
 
         public static Paciente ExcluirPaciente(
-            int Id
+            int PacienteId
         )
         {
-            Paciente paciente = GetPaciente(Id);
+            Paciente paciente = GetPaciente(PacienteId);
             Paciente.RemoverPaciente(paciente);
             return paciente;
         }
@@ -117,20 +117,15 @@ namespace Controllers
             return Paciente.GetPacientes();
         }
 
-        public static Paciente GetPaciente(int Id)
+         public static Paciente GetPaciente(int PacienteId)
         {
-            Paciente paciente = (
-                from Paciente in Paciente.GetPacientes()
-                    where Paciente.Id == Id
-                    select Paciente
-            ).First();
+            int ListLenght = Paciente.GetCount();
 
-            if (paciente == null)
-            {
-                throw new Exception("Paciente não encontrado");
+            if (PacienteId < 0 || ListLenght <= PacienteId) {
+                throw new Exception ("Id informado é inválido.");
             }
 
-            return paciente;
+            return Paciente.GetPaciente (PacienteId);
         }
     }
 }

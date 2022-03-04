@@ -4,8 +4,6 @@ namespace Models
 {
     public class Dentista : Pessoa
     {
-        public static int ID = 0;
-        private static List<Dentista> Dentistas = new List<Dentista>();
         public string Registro { set; get; }
         public double Salario { set; get; }
         public int IdEspecialidade { set; get; }
@@ -17,20 +15,10 @@ namespace Models
                 + $"\nSalario: R$ {this.Salario}"
                 + $"\nId da Especialiade: {this.IdEspecialidade}";
         }
-        public Dentista(
-            string Nome,
-            string Cpf,
-            string Fone,
-            string Email,
-            string Senha,
-            string Registro,
-            double Salario,
-            int IdEspecialidade
-        ) : this(++ID, Nome, Cpf, Fone, Email, Senha, Registro, Salario, IdEspecialidade)
+        public Dentista() : base()
         {}
 
         private Dentista(
-            int Id,
             string Nome,
             string Cpf,
             string Fone,
@@ -39,7 +27,7 @@ namespace Models
             string Registro,
             double Salario,
             int IdEspecialidade
-        ) : base(Id, Nome, Cpf, Fone, Email, Senha)
+        ) : base(Nome, Cpf, Fone, Email, Senha)
         {
             this.Registro = Registro;
             this.Salario = Salario;
@@ -49,15 +37,29 @@ namespace Models
             db.SaveChanges();
         }
 
+        public static int GetCount() {
+            return GetDentistas().Count();
+        }
 
         public static List<Dentista> GetDentistas()
         {
-            return Dentistas;
+            Context db = new Context();
+            return (from Dentista in db.Dentistas select Dentista).ToList();
         }
 
         public static void RemoverDentista(Dentista dentista)
         {
-            Dentistas.Remove(dentista);
+           Context db = new Context();
+           db.Dentistas.Remove(dentista);
+        }
+
+        public static Dentista GetDentista (int DentistaId) {
+            Context db = new Context();
+            return (
+                from Dentista in db.Dentistas
+                where Dentista.DentistaId == Id
+                select Dentista
+            ).First();
         }
     }
 }
