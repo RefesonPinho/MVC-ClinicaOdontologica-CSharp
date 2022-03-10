@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using Repository;
 
 namespace Models
 {
@@ -13,7 +16,7 @@ namespace Models
                 + $"\nData de Nascimento: {this.DataNascimento}";
         }
 
-        public Paciente() : base()
+        public Paciente() 
         {}
 
         public Paciente(
@@ -26,13 +29,9 @@ namespace Models
         ) : base(Nome, Cpf, Fone, Email, Senha)
         {
             this.DataNascimento = DataNascimento;
-            Context db = new Context()
+            Context db = new Context();
             db.Pacientes.Add(this);
             db.SaveChanges();
-        }
-
-       public static int GetCount() {
-            return GetPacientes().Count();
         }
 
         public static List<Paciente> GetPacientes()
@@ -43,17 +42,8 @@ namespace Models
 
         public static void RemoverPaciente(Paciente paciente)
         {
-           Context db = new Context();
-           db.Pacientes.Remove(paciente);
-        }
-
-        public static Paciente GetPaciente (int PacienteId) {
             Context db = new Context();
-            return (
-                from Paciente in db.Pacientes
-                where Paciente.PacienteId == Id
-                select Paciente
-            ).First();
+            db.Pacientes.Remove(paciente);
         }
     }
 }

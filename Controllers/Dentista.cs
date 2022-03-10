@@ -57,7 +57,7 @@ namespace Controllers
         }
 
         public static Dentista AlterarDentista(
-            int DentistaId,
+            int Id,
             string Nome,
             string Cpf,
             string Fone,
@@ -68,7 +68,7 @@ namespace Controllers
             int IdEspecialidade
         )
         {
-            Dentista dentista = GetDentista(DentistaId);
+            Dentista dentista = GetDentista(Id);
 
             if (!String.IsNullOrEmpty(Nome))
             {
@@ -100,14 +100,16 @@ namespace Controllers
                 dentista.Registro = Registro;
             }
 
+            dentista.Id = Id;
+
             return dentista;
         }
 
         public static Dentista ExcluirDentista(
-            int DentistaId
+            int Id
         )
         {
-            Dentista dentista = GetDentista(DentistaId);
+            Dentista dentista = GetDentista(Id);
             Dentista.RemoverDentista(dentista);
             return dentista;
         }
@@ -117,15 +119,20 @@ namespace Controllers
             return Dentista.GetDentistas();
         }
 
-        public static Dentista GetDentista(int DentistaId)
+        public static Dentista GetDentista(int Id)
         {
-            int ListLenght = Dentista.GetCount();
+            Dentista dentista = (
+                from Dentista in Dentista.GetDentistas()
+                    where Dentista.Id == Id
+                    select Dentista
+            ).First();
 
-            if (DentistaId < 0 || ListLenght <= DentistaId) {
-                throw new Exception ("Id informado é inválido.");
+            if (dentista == null)
+            {
+                throw new Exception("Dentista não encontrado");
             }
 
-            return Dentista.GetDentista (DentistaId);
+            return dentista;
         }
     }
 }

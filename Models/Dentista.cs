@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using Repository;
+
 namespace Models
 {
     public class Dentista : Pessoa
@@ -15,10 +19,10 @@ namespace Models
                 + $"\nSalario: R$ {this.Salario}"
                 + $"\nId da Especialiade: {this.IdEspecialidade}";
         }
-        public Dentista() : base()
+        public Dentista() 
         {}
 
-        private Dentista(
+        public Dentista(
             string Nome,
             string Cpf,
             string Fone,
@@ -37,9 +41,6 @@ namespace Models
             db.SaveChanges();
         }
 
-        public static int GetCount() {
-            return GetDentistas().Count();
-        }
 
         public static List<Dentista> GetDentistas()
         {
@@ -49,17 +50,8 @@ namespace Models
 
         public static void RemoverDentista(Dentista dentista)
         {
-           Context db = new Context();
-           db.Dentistas.Remove(dentista);
-        }
-
-        public static Dentista GetDentista (int DentistaId) {
             Context db = new Context();
-            return (
-                from Dentista in db.Dentistas
-                where Dentista.DentistaId == Id
-                select Dentista
-            ).First();
+            db.Dentistas.Remove(dentista);
         }
     }
 }

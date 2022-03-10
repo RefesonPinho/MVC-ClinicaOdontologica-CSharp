@@ -1,11 +1,13 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel.DataAnnotations;
+using Repository;
 
 namespace Models
 {
     public class AgendamentoProcedimento 
     {
-        public static int ID = 0;
-        private static List<AgendamentoProcedimento> AgendamentoProcedimentos = new List<AgendamentoProcedimento>();
         public int Id { set; get; }
         public int IdAgendamento { set; get; }
         public int IdProcedimento{ set; get; }
@@ -17,34 +19,32 @@ namespace Models
                 + $"\nIdAgendamento: R$ {this.IdAgendamento}"
                 + $"\nIdProcedimento: {this.IdProcedimento}";
         }
-        public AgendamentoProcedimento(
-            int IdAgendamento,
-            int IdProcedimento
-        ) : this(++ID, IdAgendamento, IdProcedimento)
+        public AgendamentoProcedimento() 
         {}
 
-        private AgendamentoProcedimento(
-            int Id,
+        public AgendamentoProcedimento(
             int IdAgendamento,
             int IdProcedimento
         )
         {
-            this.Id = Id;
             this.IdAgendamento = IdAgendamento;
             this.IdProcedimento = IdProcedimento;
-
-            AgendamentoProcedimentos.Add(this);
+            Context db = new Context();
+            db.AgendamentoProcedimentos.Add(this);
+            db.SaveChanges();
         }
 
 
         public static List<AgendamentoProcedimento> GetAgendamentoProcedimentos()
         {
-            return AgendamentoProcedimentos;
+            Context db = new Context();
+            return (from AgendamentoProcedimento in db.AgendamentoProcedimentos select AgendamentoProcedimento).ToList();
         }
 
         public static void RemoverAgendamentoProcedimento(AgendamentoProcedimento agendamentoProcedimento)
         {
-            AgendamentoProcedimentos.Remove(agendamentoProcedimento);
+            Context db = new Context();
+            db.AgendamentoProcedimentos.Remove(agendamentoProcedimento);
         }
     }
 }

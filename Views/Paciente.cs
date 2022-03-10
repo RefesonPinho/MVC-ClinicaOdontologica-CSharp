@@ -42,12 +42,12 @@ namespace Views
 
         public static void AlterarPaciente()
         {
-            int PacienteId = 0;
+            int Id = 0;
             DateTime DataNascimento = DateTime.Now;
             Console.WriteLine("Digite o ID do Paciente: ");
             try
             {
-                PacienteId = Convert.ToInt32(Console.ReadLine());
+                Id = Convert.ToInt32(Console.ReadLine());
             }
             catch
             {
@@ -74,7 +74,7 @@ namespace Views
             }
 
             PacienteController.AlterarPaciente(
-                PacienteId,
+                Id,
                 Nome,
                 Cpf,
                 Fone,
@@ -87,11 +87,11 @@ namespace Views
 
         public static void ExcluirPaciente()
         {
-            int PacienteId = 0;
+            int Id = 0;
             Console.WriteLine("Digite o ID do Paciente: ");
             try
             {
-                PacienteId = Convert.ToInt32(Console.ReadLine());
+                Id = Convert.ToInt32(Console.ReadLine());
             }
             catch
             {
@@ -99,7 +99,7 @@ namespace Views
             }
             
             PacienteController.ExcluirPaciente(
-                PacienteId
+                Id
             );
 
         }

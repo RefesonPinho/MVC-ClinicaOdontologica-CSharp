@@ -55,12 +55,12 @@ namespace Views
 
         public static void AlterarDentista()
         {
-            int DentistaId = 0;
+            int Id = 0;
             double Salario = 0;
             Console.WriteLine("Digite o ID do Dentista: ");
             try
             {
-                DentistaId = Convert.ToInt32(Console.ReadLine());
+                Id = Convert.ToInt32(Console.ReadLine());
             }
             catch
             {
@@ -101,7 +101,7 @@ namespace Views
 
 
             DentistaController.AlterarDentista(
-                DentistaId,
+                Id,
                 Nome,
                 Cpf,
                 Fone,
@@ -116,11 +116,11 @@ namespace Views
 
         public static void ExcluirDentista()
         {
-            int DentistaId = 0;
+            int Id = 0;
             Console.WriteLine("Digite o ID do Dentista: ");
             try
             {
-                DentistaId = Convert.ToInt32(Console.ReadLine());
+                Id = Convert.ToInt32(Console.ReadLine());
             }
             catch
             {
@@ -128,7 +128,7 @@ namespace Views
             }
             
             DentistaController.ExcluirDentista(
-                DentistaId
+                Id
             );
 
         }

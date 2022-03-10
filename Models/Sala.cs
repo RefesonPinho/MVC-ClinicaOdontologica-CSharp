@@ -1,31 +1,25 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using Repository;
 
 namespace Models
 {
     public class Sala
     {
-        private static List<Sala> Salas = new List<Sala>();
         public int Id { set; get; }
         public string Numero { set; get; }
         public string Equipamentos { set; get; }
 
-        public Sala(
-            string Numero,
-            string Equipamentos
-        )
-        {
-            this.Numero = Numero;
-            this.Equipamentos = Equipamentos;
-        }
+        public Sala()
+        {}
 
         public Sala(
-            int Id,
             string Numero,
             string Equipamentos
         )
         {
-            this.Id = Id;
             this.Numero = Numero;
             this.Equipamentos = Equipamentos;
             Context db = new Context();
@@ -57,12 +51,14 @@ namespace Models
 
         public static List<Sala> GetSalas()
         {
-            return Salas;
+            Context db = new Context();
+            return (from Sala in db.Salas select Sala).ToList();
         }
 
         public static void RemoverSala(Sala sala)
         {
-            Salas.Remove(sala);
+            Context db = new Context();
+            db.Salas.Remove(sala);
         }
     }
 }
