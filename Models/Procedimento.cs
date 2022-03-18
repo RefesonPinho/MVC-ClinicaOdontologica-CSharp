@@ -41,6 +41,19 @@ namespace Models
             return (from Procedimento in db.Procedimentos select Procedimento).ToList();
         }
 
+        public static void AlterarProcedimento(
+            int Id,
+            string Descricao,
+            double Preco
+        ) 
+        {
+            Context db = new Context();
+            Procedimento procedimento = db.Procedimentos.First(it => it.Id == Id);
+            procedimento.Descricao = Descricao;
+            procedimento.Preco = Preco;
+            db.SaveChanges();
+        }
+
         public static void RemoverProcedimento(Procedimento procedimento)
         {
            Context db = new Context();

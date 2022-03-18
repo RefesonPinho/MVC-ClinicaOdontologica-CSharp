@@ -53,6 +53,19 @@ namespace Models
             return (from Especialidade in db.Especialidades select Especialidade).ToList();
         }
 
+        public static void AlterarEspecialidade(
+            int Id,
+            string Descricao,
+            string Detalhamento
+        ) 
+        {
+            Context db = new Context();
+            Especialidade especialidade = db.Especialidades.First(it => it.Id == Id);
+            especialidade.Descricao = Descricao;
+            especialidade.Detalhamento = Detalhamento;
+            db.SaveChanges();
+        }
+
         public static void RemoverEspecialidade(
             Especialidade especialidade
         )

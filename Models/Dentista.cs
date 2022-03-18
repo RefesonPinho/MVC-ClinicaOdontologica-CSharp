@@ -56,7 +56,8 @@ namespace Models
             String Email,
             String Senha,
             String Registro
-        ) {
+        ) 
+        {
             Context db = new Context();
             Dentista dentista = db.Dentistas.First(it => it.Id == Id);
             dentista.Nome = Nome;

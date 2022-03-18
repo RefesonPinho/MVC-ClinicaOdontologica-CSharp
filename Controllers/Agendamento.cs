@@ -75,9 +75,10 @@ namespace Controllers
                 throw new Exception("Já existe um agendamento para este horário");
             }
             
-            agendamento.SalaId = SalaId;
-            agendamento.Data = Data;
+            int altSalaId =agendamento.SalaId = SalaId;
+            DateTime altDataId =agendamento.Data = Data;
 
+            Agendamento.AlterarAgendamento(Id, altSalaId, altDataId);
             return agendamento;
         }
 

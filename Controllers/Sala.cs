@@ -27,11 +27,10 @@ namespace Controllers
         {
             Sala sala = GetSala(Id);
 
-            if (!String.IsNullOrEmpty(Numero)) {
-                sala.Numero = Numero;
-            }
-            sala.Equipamentos = Equipamentos;
+            string altNumero = !String.IsNullOrEmpty(Numero) ? Numero : sala.Numero;
+            string altEquipamentos= sala.Equipamentos = Equipamentos;
 
+            Sala.AlterarSala(Id, altNumero, altEquipamentos);
             return sala;
         }
 

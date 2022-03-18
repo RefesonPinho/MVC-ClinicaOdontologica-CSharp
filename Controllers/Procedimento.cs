@@ -17,14 +17,17 @@ namespace Controllers
             return new Procedimento(Descricao, Preco);
         }
 
-        public static Procedimento AlterarProcedimento(
+         public static Procedimento AlterarProcedimento(
             int Id,
             string Descricao,
             double Preco
         )
         {
             Procedimento procedimento = GetProcedimento(Id);
+            string altDescricao = procedimento.Descricao = Descricao;
+            double altPreco= procedimento.Preco = Preco;
 
+            Procedimento.AlterarProcedimento(Id, altDescricao, altPreco);
             return procedimento;
         }
 

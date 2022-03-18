@@ -48,7 +48,8 @@ namespace Models
             String Email,
             String Senha,
             DateTime DataNascimento
-        ) {
+        ) 
+        {
             Context db = new Context();
             Paciente paciente = db.Pacientes.First(it => it.Id == Id);
             paciente.Nome = Nome;

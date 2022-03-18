@@ -50,6 +50,10 @@ namespace Controllers
             {
                 throw new Exception("Já existe um Especialidade com esse nome no sistema");
             }
+            string altDescricao = especialidade.Descricao = Descricao;
+            string altDetalhamento= especialidade.Detalhamento = Detalhamento;
+
+            Especialidade.AlterarEspecialidade(Id, altDescricao, altDetalhamento);
 
             return especialidade;
         }

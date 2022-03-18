@@ -12,6 +12,6 @@ namespace Repository
         public DbSet<Especialidade> Especialidades { get; set; }
         public DbSet<AgendamentoProcedimento> AgendamentoProcedimentos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseMySql("server=localhost;port=3308;database=Dentista;user=root;password=");
+            => options.UseMySql("server=localhost;port=3306;database=Dentista;user=root;password=");
     }
 }

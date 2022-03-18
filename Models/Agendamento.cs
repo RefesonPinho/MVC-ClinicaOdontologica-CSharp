@@ -70,6 +70,19 @@ namespace Models
             return (from Agendamento in db.Agendamentos select Agendamento).ToList();
         }
 
+        public static void AlterarAgendamento(
+            int Id,
+            int SalaId,
+            DateTime Data
+        )
+        {
+            Context db = new Context();
+            Agendamento agendamento = db.Agendamentos.First(it => it.Id == Id);
+            agendamento.SalaId = SalaId;
+            agendamento.Data = Data;
+            db.SaveChanges();
+        }
+
         public static void RemoverAgendamento(
             Agendamento agendamento
         )

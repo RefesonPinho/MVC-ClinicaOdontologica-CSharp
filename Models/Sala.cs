@@ -55,6 +55,19 @@ namespace Models
             return (from Sala in db.Salas select Sala).ToList();
         }
 
+        public static void AlterarSala(
+            int Id,
+            string Numero,
+            string Equipamentos
+        ) 
+        {
+            Context db = new Context();
+            Sala sala = db.Salas.First(it => it.Id == Id);
+            sala.Numero = Numero;
+            sala.Equipamentos = Equipamentos;
+            db.SaveChanges();
+        }
+
         public static void RemoverSala(Sala sala)
         {
             Context db = new Context();
