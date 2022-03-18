@@ -65,31 +65,6 @@ namespace Controllers
         {
             Paciente paciente = GetPaciente(Id);
 
-            if (!String.IsNullOrEmpty(Nome))
-            {
-                paciente.Nome = Nome;
-            }
-
-            if (!String.IsNullOrEmpty(Cpf))
-            {
-                paciente.Cpf = Cpf;
-            }
-
-            if (!String.IsNullOrEmpty(Fone))
-            {
-                paciente.Fone = Fone;
-            }
-
-            if (!String.IsNullOrEmpty(Email))
-            {
-                paciente.Email = Email;
-            }
-
-            if (!String.IsNullOrEmpty(Senha))
-            {
-                paciente.Senha = BCrypt.Net.BCrypt.HashPassword(Senha);
-            }
-
             if (DataNascimento > DateTime.Now)
             {
                 throw new Exception("Data de Nacimento inválida");
@@ -100,6 +75,17 @@ namespace Controllers
                 paciente.DataNascimento = DataNascimento;
             }
             paciente.Id = Id;
+
+            string altNome = !String.IsNullOrEmpty(Nome) ? Nome : paciente.Nome;
+            string altCpf = !String.IsNullOrEmpty(Cpf) ? Cpf : paciente.Cpf;
+            string altFone = !String.IsNullOrEmpty(Fone) ? Fone : paciente.Fone; 
+            string altEmail = !String.IsNullOrEmpty(Email) ? Email : paciente.Email;
+            string altSenha = !String.IsNullOrEmpty(Senha) 
+                ? BCrypt.Net.BCrypt.HashPassword(Senha)
+                : paciente.Senha;
+            DateTime altDataNascimento = DataNascimento;
+
+            Paciente.AlterarPaciente(Id, altNome, altCpf, altFone, altEmail, altSenha, altDataNascimento);
 
             return paciente;
         }

@@ -45,6 +45,7 @@ namespace Models
         {
             Context db = new Context();
             db.AgendamentoProcedimentos.Remove(agendamentoProcedimento);
+            db.SaveChanges();
         }
     }
 }

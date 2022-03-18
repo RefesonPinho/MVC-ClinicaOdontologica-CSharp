@@ -59,6 +59,7 @@ namespace Models
         {
             Context db = new Context();
             db.Salas.Remove(sala);
+            db.SaveChanges();
         }
     }
 }

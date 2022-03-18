@@ -76,6 +76,7 @@ namespace Models
         {
             Context db = new Context();
             db.Agendamentos.Remove(agendamento);
+            db.SaveChanges();
         }
     }
 }

@@ -69,38 +69,16 @@ namespace Controllers
         )
         {
             Dentista dentista = GetDentista(Id);
+            string altNome = !String.IsNullOrEmpty(Nome) ? Nome : dentista.Nome;
+            string altCpf = !String.IsNullOrEmpty(Cpf) ? Cpf : dentista.Cpf;
+            string altFone = !String.IsNullOrEmpty(Fone) ? Fone : dentista.Fone; 
+            string altEmail = !String.IsNullOrEmpty(Email) ? Email : dentista.Email;
+            string altSenha = !String.IsNullOrEmpty(Senha) 
+                ? BCrypt.Net.BCrypt.HashPassword(Senha)
+                : dentista.Senha;
+            string altRegistro = !String.IsNullOrEmpty(Registro) ? Registro : dentista.Registro ;
 
-            if (!String.IsNullOrEmpty(Nome))
-            {
-                dentista.Nome = Nome;
-            }
-
-            if (!String.IsNullOrEmpty(Cpf))
-            {
-                dentista.Cpf = Cpf;
-            }
-
-            if (!String.IsNullOrEmpty(Fone))
-            {
-                dentista.Fone = Fone;
-            }
-
-            if (!String.IsNullOrEmpty(Email))
-            {
-                dentista.Email = Email;
-            }
-
-            if (!String.IsNullOrEmpty(Senha))
-            {
-                dentista.Senha = BCrypt.Net.BCrypt.HashPassword(Senha);
-            }
-
-            if (!String.IsNullOrEmpty(Registro))
-            {
-                dentista.Registro = Registro;
-            }
-
-            dentista.Id = Id;
+            Dentista.AlterarDentista(Id, altNome, altCpf, altFone, altEmail, altSenha, altRegistro);
 
             return dentista;
         }

@@ -48,10 +48,31 @@ namespace Models
             return (from Dentista in db.Dentistas select Dentista).ToList();
         }
 
+        public static void AlterarDentista(
+            int Id,
+            String Nome,
+            String Cpf,
+            String Fone,
+            String Email,
+            String Senha,
+            String Registro
+        ) {
+            Context db = new Context();
+            Dentista dentista = db.Dentistas.First(it => it.Id == Id);
+            dentista.Nome = Nome;
+            dentista.Cpf = Cpf;
+            dentista.Fone = Fone;
+            dentista.Email = Email;
+            dentista.Senha = Senha;
+            dentista.Registro = Registro;
+            db.SaveChanges();
+        }
+
         public static void RemoverDentista(Dentista dentista)
         {
             Context db = new Context();
             db.Dentistas.Remove(dentista);
+            db.SaveChanges();
         }
     }
 }

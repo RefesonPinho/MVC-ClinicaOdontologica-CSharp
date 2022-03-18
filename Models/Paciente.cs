@@ -40,10 +40,31 @@ namespace Models
             return (from Paciente in db.Pacientes select Paciente).ToList();
         }
 
+        public static void AlterarPaciente(
+            int Id,
+            String Nome,
+            String Cpf,
+            String Fone,
+            String Email,
+            String Senha,
+            DateTime DataNascimento
+        ) {
+            Context db = new Context();
+            Paciente paciente = db.Pacientes.First(it => it.Id == Id);
+            paciente.Nome = Nome;
+            paciente.Cpf = Cpf;
+            paciente.Fone = Fone;
+            paciente.Email = Email;
+            paciente.Senha = Senha;
+            paciente.DataNascimento = DataNascimento;
+            db.SaveChanges();
+        }
+
         public static void RemoverPaciente(Paciente paciente)
         {
             Context db = new Context();
             db.Pacientes.Remove(paciente);
+            db.SaveChanges();
         }
     }
 }
