@@ -42,7 +42,7 @@ namespace ConsultorioOdontologico
             return password;
         }
 
-        public static void Main(string[] args)
+        public static void Maindois(string[] args)
         {
             DentistaController.InserirDentista("Augusto da Silva", "454.123.321-54", "47 98454-6521", "Augusto.silva@dentista.com", "123456", "12345/SC", 12000, 1);
             PacienteController.InserirPaciente("Fernando Vasconcellos", "789.456.123.41", "47 99142-4152", "fernando.vasconcellos@paciente.com", "123456", Convert.ToDateTime("1995-04-12"));
