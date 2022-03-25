@@ -110,7 +110,7 @@ namespace exemplo_winforms
             }
         private void handleInsertClick(object sender, EventArgs e)
         {
-            Views2.InsertDentista menu = new Views2.InsertDentista();
+            Views2.InsertPaciente menu = new Views2.InsertPaciente();
             menu.ShowDialog();
         }
 

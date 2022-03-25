@@ -27,7 +27,7 @@ namespace Views2
         Label lblSenha;
         Label lblRegistro;
         Label lblSalario;
-        Label lblIdEspecialidade;
+        Label lblDataNascimento;
         TextBox textNome;
         TextBox textCpf;
         TextBox textFone;
@@ -35,7 +35,7 @@ namespace Views2
         TextBox textSenha;
         TextBox textRegistro;
         TextBox textSalario;
-        TextBox textIdEspecialidade;
+        TextBox textDataNascimento;
 
         Button btnConfirm1;
         Button btnCancel1;
@@ -86,29 +86,14 @@ namespace Views2
             textSenha.Location = new Point(10,325);
             textSenha.Size = new Size(360,20);
 
-            this.lblRegistro = new Label();
-            this.lblRegistro.Text = "Registro";
-            this.lblRegistro.Location = new Point(120, 350);
+            this.lblDataNascimento = new Label();
+            this.lblDataNascimento.Text = "Data de Nascimento";
+            this.lblDataNascimento.Location = new Point(120, 345);
+            this.lblDataNascimento.Size = new Size(140,60);
 
-            textRegistro = new TextBox();
-            textRegistro.Location = new Point(10,375);
-            textRegistro.Size = new Size(360,20);
-
-            this.lblSalario = new Label();
-            this.lblSalario.Text = "Salário";
-            this.lblSalario.Location = new Point(120, 400);
-
-            textSalario = new TextBox();
-            textSalario.Location = new Point(10,425);
-            textSalario.Size = new Size(360,20);
-
-            this.lblIdEspecialidade = new Label();
-            this.lblIdEspecialidade.Text = "Id Especialidade";
-            this.lblIdEspecialidade.Location = new Point(100, 450);
-
-            textIdEspecialidade = new TextBox();
-            textIdEspecialidade.Location = new Point(10,475);
-            textIdEspecialidade.Size = new Size(360,20);
+            textDataNascimento = new TextBox();
+            textDataNascimento.Location = new Point(10,375);
+            textDataNascimento.Size = new Size(360,20);
 
             this.btnConfirm1 = new ButtonForm(this.Controls, "Confirmar", 40,520, this.handleConfirmClick);
             this.btnCancel1 = new ButtonForm(this.Controls, "Cancelar", 150, 520, this.handleCancelClick);
@@ -125,9 +110,7 @@ namespace Views2
             this.Controls.Add(this.lblFone);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblSenha);
-            this.Controls.Add(this.lblRegistro);
-            this.Controls.Add(this.lblSalario);
-            this.Controls.Add(this.lblIdEspecialidade);
+            this.Controls.Add(this.lblDataNascimento);
             this.Controls.Add(this.btnConfirm1);
             this.Controls.Add(this.btnCancel1);
             this.Controls.Add(this.textNome);
@@ -135,13 +118,31 @@ namespace Views2
             this.Controls.Add(this.textFone);
             this.Controls.Add(this.textEmail);
             this.Controls.Add(this.textSenha);
-            this.Controls.Add(this.textRegistro);
-            this.Controls.Add(this.textSalario);
-            this.Controls.Add(this.textIdEspecialidade);
+            this.Controls.Add(this.textDataNascimento);
                
         }
         private void handleConfirmClick(object sender, EventArgs e) 
         {
+            DateTime DataNascimento1 = Convert.ToDateTime(textDataNascimento.Text);
+ 
+            try
+            {
+                PacienteController.InserirPaciente(
+                    textNome.Text,
+                    textCpf.Text,
+                    textFone.Text,
+                    textEmail.Text,
+                    textSenha.Text,
+                    DataNascimento1
+                );
+
+                MessageBox.Show("Dados inseridos com sucesso.");
+
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Não foi possível inserir os dados.");
+            }
             Views3.ConfirmClick menu = new Views3.ConfirmClick();
             menu.ShowDialog();  
         }
